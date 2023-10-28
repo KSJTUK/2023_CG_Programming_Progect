@@ -5,7 +5,4 @@
 
 int main()
 {
-	glfwInit();
-
-	glewInit();
 }
