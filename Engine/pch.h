@@ -1,7 +1,6 @@
-#ifndef _PCH_H
-#define _PCH_H
+ï»¿#pragma once
 
-// OpenGL Çì´õ ÆÄÀÏµé Ãß°¡
+// OpenGL í—¤ë” íŒŒì¼ë“¤ ì¶”ê°€
 #include <gl/glew.h>
 #include <gl/glfw3.h>
 #include <gl/glm/glm.hpp>
@@ -10,7 +9,7 @@
 #include <gl/glm/gtx/vector_angle.hpp>
 #include <gl/glm/gtx/euler_angles.hpp>
 
-// STL Çì´õ ÆÄÀÏµé Ãß°¡
+// STL í—¤ë” íŒŒì¼ë“¤ ì¶”ê°€
 #include <string>
 #include <sstream>
 #include <fstream>
@@ -67,4 +66,3 @@ using vertex = _TAG_VERTEX;
 using WINDOWINFO = _TAG_WINDOWINFO;
 
 extern std::unique_ptr<class Engine> engine;
-#endif
