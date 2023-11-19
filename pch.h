@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include <stdio.h>
+#include <Windows.h>
+
 // OpenGL 헤더 파일들 추가
 #include <gl/glew.h>
 #include <gl/glfw3.h>
@@ -63,6 +66,7 @@ using float3 = _TAG_FLOAT3;
 using float4 = _TAG_FLOAT4;
 using vertex = _TAG_VERTEX;
 
-using WINDOWINFO = _TAG_WINDOWINFO;
+using WINDOWINFORMATION = _TAG_WINDOWINFO;
+
 
 extern std::unique_ptr<class Engine> engine;
