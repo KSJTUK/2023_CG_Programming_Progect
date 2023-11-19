@@ -50,11 +50,31 @@ void Input::Update()
 
 	for (auto i = 0; i < 256; ++i) {
 		if (temp[i] & 0x80) {
-			if (m_keyboard_State[i] == KEY_STATE::NONE) {
-				printf("press\n");
+			if (m_keyboard_State[i] == KEY_STATE::NONE or m_keyboard_State[i] == KEY_STATE::RELEASED) {
+				m_keyboard_State[i] = KEY_STATE::DOWN;
+			}
+			else if (m_keyboard_State[i] == KEY_STATE::DOWN) {
+				m_keyboard_State[i] = KEY_STATE::PRESSED;
 			}
 		}
+		else {
+			if (m_keyboard_State[i] == KEY_STATE::PRESSED or m_keyboard_State[i] == KEY_STATE::DOWN) {
+				m_keyboard_State[i] = KEY_STATE::RELEASED;
+			}
+			else if (m_keyboard_State[i] == KEY_STATE::RELEASED) {
+				m_keyboard_State[i] = KEY_STATE::NONE;
+			}
+		}
+
+
+		if (temp[VK_ESCAPE] & 0x80) {
+			glfwSetWindowShouldClose(m_window, GLFW_TRUE);
+		}
 	}
+
+
+
+
 
 
 
@@ -62,5 +82,5 @@ void Input::Update()
 
 const KEY_STATE Input::Getkey(int key)
 {
-	return KEY_STATE();
+	return m_keyboard_State[key];
 }
