@@ -74,6 +74,17 @@ void Input::Update()
 
 
 
+	double tx_, ty_;
+
+
+	glfwGetCursorPos(m_window, &tx_, &ty_);
+
+	m_deltaMouse.x = static_cast<float>(tx_) - m_prevMouse.x;
+	m_deltaMouse.y = static_cast<float>(ty_) - m_prevMouse.y;
+
+	m_prevMouse.x = static_cast<float>(tx_);
+	m_prevMouse.y = static_cast<float>(ty_);
+
 
 
 

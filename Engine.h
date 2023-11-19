@@ -1,5 +1,10 @@
 ﻿#pragma once
 
+
+#include "Renderer.h"
+#include "Timer.h"
+
+
 class Engine {
 public:
 	Engine();
@@ -13,6 +18,21 @@ private:
 	int32		m_swapInterver{ };
 
 
+	/// <summary>
+	/// This is Engine's UNIQUE property 
+	/// </summary>
+	std::unique_ptr<Renderer> m_renderer{ nullptr };
+
+	/// <summary>
+	/// This is Engine's UNIQUE property 
+	/// </summary>
+	std::unique_ptr<Timer> m_timer{ nullptr };
+
+
+
+	/// <summary>
+	/// This express Engine's Initialize is ready
+	/// </summary>
 	bool m_ready = false;
 public:
 	void Init();

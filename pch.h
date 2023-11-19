@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <stdio.h>
+#include <iostream>
 #include <Windows.h>
 
 // OpenGL 헤더 파일들 추가

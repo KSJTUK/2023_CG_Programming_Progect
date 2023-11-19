@@ -42,7 +42,7 @@ private:
 
 
 	float2 m_prevMouse{};
-	float2 m_delteMouse{};
+	float2 m_deltaMouse{};
 
 	static Input* InputInstance;
 
