@@ -68,5 +68,8 @@ void Engine::Loop() {
 		LateUpdate();
 
 		Render();
+
+
+		glfwPollEvents();
 	}
 }
