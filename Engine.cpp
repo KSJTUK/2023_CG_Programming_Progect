@@ -46,6 +46,9 @@ void Engine::Init() {
 	glfwSwapInterval(m_swapInterver);
 
 
+	
+	glfwSetInputMode(m_windowInfo.window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
 
 	// Initialize Components of Engine 
 	Input::GetInstance(m_windowInfo.window);
@@ -63,6 +66,9 @@ void Engine::Update() {
 		glfwSetWindowTitle(m_windowInfo.window, std::string(m_windowInfo.windowTitle + std::to_string(m_timer->GetFps())).c_str());
 
 		
+
+		m_renderer->Update(m_timer->GetDeltaTime());
+
 		Input::GetInstance()->Update();
 	}
 }
@@ -77,6 +83,9 @@ void Engine::Render() {
 	//// 렌더링 코드
 	glClearColor(0.5f, 0.5f, 0.5f, 1.f);
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	m_renderer->Render();
+
 
 	glfwSwapBuffers(m_windowInfo.window);
 }

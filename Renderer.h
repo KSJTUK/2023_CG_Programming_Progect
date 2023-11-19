@@ -1,5 +1,10 @@
 #pragma once
-class Renderer{
+
+#include "Shader.h"
+#include "Camera.h"
+
+
+class Renderer {
 public:
 
 	/// <summary>
@@ -25,10 +30,28 @@ private:
 
 	GLFWwindow* m_window{ nullptr };
 
+
+	/// <summary>
+	/// Renderer's Shader 
+	/// </summary>
+	std::unique_ptr<Shader> m_shader{ nullptr };
+
+
+	std::unique_ptr<Camera> m_mainCamera{ nullptr };
+
+	UINT temp{};
+	size_t temp_size{};
+
+
+	GLenum m_renderMode = GL_FILL;
+
+
 public:
 
 
 	void Render();
+	void Update(float DeltaTime);
+
 
 };
 

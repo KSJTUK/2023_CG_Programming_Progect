@@ -65,6 +65,24 @@ struct _TAG_VERTEX {
 using float2 = _TAG_FLOAT2;
 using float3 = _TAG_FLOAT3;
 using float4 = _TAG_FLOAT4;
+/// <summary>
+/// <para>
+/// position	= float3{x,y,z}                                                   
+/// </para>
+/// 
+/// <para>
+/// color		= float4{r,g,b,a}
+/// </para>
+/// 
+/// <para>
+/// texture		= float2{x,y}
+/// </para>
+/// 
+/// <para>
+/// normal		= glm::vec3{x,y,z}
+/// </para>
+/// 
+/// </summary>
 using vertex = _TAG_VERTEX;
 
 using WINDOWINFORMATION = _TAG_WINDOWINFO;

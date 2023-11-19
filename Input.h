@@ -15,13 +15,13 @@ enum class KEY_STATE{
 	/// <summary>
 	///  pressing during time 
 	/// </summary>
-	PRESSED,
+	PRESS,
 
 
 	/// <summary>
 	///  released on time  
 	/// </summary>
-	RELEASED
+	RELEASE
 
 
 };
@@ -58,8 +58,8 @@ public:
 	void Update();
 
 
-	const KEY_STATE Getkey(int key);
-
+	const KEY_STATE GetKey(int key);
+	const float2 GetDeltaMouse() { return m_deltaMouse; };
 
 
 };

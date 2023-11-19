@@ -50,18 +50,18 @@ void Input::Update()
 
 	for (auto i = 0; i < 256; ++i) {
 		if (temp[i] & 0x80) {
-			if (m_keyboard_State[i] == KEY_STATE::NONE or m_keyboard_State[i] == KEY_STATE::RELEASED) {
+			if (m_keyboard_State[i] == KEY_STATE::NONE or m_keyboard_State[i] == KEY_STATE::RELEASE) {
 				m_keyboard_State[i] = KEY_STATE::DOWN;
 			}
 			else if (m_keyboard_State[i] == KEY_STATE::DOWN) {
-				m_keyboard_State[i] = KEY_STATE::PRESSED;
+				m_keyboard_State[i] = KEY_STATE::PRESS;
 			}
 		}
 		else {
-			if (m_keyboard_State[i] == KEY_STATE::PRESSED or m_keyboard_State[i] == KEY_STATE::DOWN) {
-				m_keyboard_State[i] = KEY_STATE::RELEASED;
+			if (m_keyboard_State[i] == KEY_STATE::PRESS or m_keyboard_State[i] == KEY_STATE::DOWN) {
+				m_keyboard_State[i] = KEY_STATE::RELEASE;
 			}
-			else if (m_keyboard_State[i] == KEY_STATE::RELEASED) {
+			else if (m_keyboard_State[i] == KEY_STATE::RELEASE) {
 				m_keyboard_State[i] = KEY_STATE::NONE;
 			}
 		}
@@ -91,7 +91,7 @@ void Input::Update()
 
 }
 
-const KEY_STATE Input::Getkey(int key)
+const KEY_STATE Input::GetKey(int key)
 {
 	return m_keyboard_State[key];
 }
