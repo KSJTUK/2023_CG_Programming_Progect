@@ -17,6 +17,9 @@ public:
 	/// <param name="color">= Color of mesh float3{r,g,b} </param>
 	Mesh(std::string path, float3 color);
 
+
+	Mesh(const Mesh& other);
+
 private:
 
 	std::vector<vertex> m_vertex{};

@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "Engine.h"
 #include "Input.h"
 
@@ -49,6 +49,7 @@ void Engine::Init() {
 	
 	glfwSetInputMode(m_windowInfo.window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
+	glEnable(GL_DEPTH_TEST);
 
 	// Initialize Components of Engine 
 	Input::GetInstance(m_windowInfo.window);
@@ -82,7 +83,7 @@ void Engine::LateUpdate() {
 void Engine::Render() {
 	//// 렌더링 코드
 	glClearColor(0.5f, 0.5f, 0.5f, 1.f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	m_renderer->Render();
 

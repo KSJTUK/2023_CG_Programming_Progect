@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Renderer.h"
 #include "Mesh.h"
+#include "Rigidbody.h"
 
 Renderer::Renderer(GLFWwindow* window)
 {
@@ -17,22 +18,27 @@ Renderer::Renderer(GLFWwindow* window)
 	temp_size = test.GetVertexCount();
 
 
+	
 }
 
 void Renderer::Render()
 {
 
-
-	glUseProgram(m_shader->GetShaderID());
-	glPolygonMode(GL_FRONT_AND_BACK, m_renderMode );
-
-
 	
+	glUseProgram(m_shader->GetShaderID());
+	glPolygonMode(GL_FRONT_AND_BACK	, m_renderMode );
 	m_mainCamera->Render();
+	
+
+
+	UINT TransformLocation = glGetUniformLocation(m_shader->GetShaderID(), "transform");
+
+	glUniformMatrix4fv(TransformLocation, 1, GL_FALSE, glm::value_ptr(glm::mat4{ 1.f }));
+
 
 
 	glBindVertexArray(temp);
-	glDrawArrays(GL_TRIANGLES, 0, temp_size);
+	glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(temp_size));
 
 
 

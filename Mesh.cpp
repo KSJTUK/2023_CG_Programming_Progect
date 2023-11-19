@@ -101,7 +101,7 @@ Mesh::Mesh(std::string path, float3 color) {
 				GLuint Data[3]{};
 				int dataindex = 0;
 				if (Line[i].find("//") != std::string::npos) {
-					// ÀÖÀ¸¸é
+					// ìžˆìœ¼ë©´
 
 					std::getline(iss, token, '/');
 					if (!token.empty())
@@ -115,7 +115,7 @@ Mesh::Mesh(std::string path, float3 color) {
 						normals_indices.push_back(static_cast<UINT>(stoi(token) - 1));
 				}
 				else {
-					//¾øÀ¸¸é 
+					//ì—†ìœ¼ë©´ 
 
 					std::getline(iss, token, '/');
 					if (!token.empty())
@@ -189,12 +189,19 @@ Mesh::Mesh(std::string path, float3 color) {
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, color));
 	glEnableVertexAttribArray(1);
 
-
-
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, normal));
+	glEnableVertexAttribArray(2);
 
 
 
 
 	
 
+}
+
+Mesh::Mesh(const Mesh& other){
+	m_vertex = other.m_vertex;
+	m_vertexCount = other.m_vertexCount;
+	m_vao = other.m_vao;
+	m_vbo = other.m_vbo;
 }
