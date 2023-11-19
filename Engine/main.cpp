@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "Engine.h"
 #include <gl\glew.h>
 
@@ -8,3 +8,5 @@ int main()
 
 	engine->Loop();
 }
+
+// 한글 주석 테스트입니다 
