@@ -3,41 +3,39 @@
 
 Input* Input::InputInstance = nullptr;
 
-Input* Input::GetInstance(GLFWwindow* window)
+
+void Input::Init(GLFWwindow* window)
 {
 
-	if (InputInstance == nullptr) {
-		InputInstance = new Input;
-
-		InputInstance->m_window = window;
+	InputInstance->m_window = window;
 
 
-		InputInstance->m_keyboard_State = new KEY_STATE[256];
-		
-		for (auto i = 0; i < 256; ++i) {
-			InputInstance->m_keyboard_State[i] = KEY_STATE::NONE;
-		}
+	InputInstance->m_keyboard_State = new KEY_STATE[256];
 
-
-		double tx_, ty_{};
-		glfwGetCursorPos(InputInstance->m_window, &tx_, &ty_);
-		InputInstance->m_prevMouse = float2{ static_cast<float>(tx_),static_cast<float>(ty_) };
-
-
-
+	for (auto i = 0; i < 256; ++i) {
+		InputInstance->m_keyboard_State[i] = KEY_STATE::NONE;
 	}
 
 
+	double tx_, ty_{};
+	glfwGetCursorPos(InputInstance->m_window, &tx_, &ty_);
+	InputInstance->m_prevMouse = float2{ static_cast<float>(tx_),static_cast<float>(ty_) };
 
 
-	return InputInstance;
 }
+
+
 
 Input* Input::GetInstance()
 {
-	assert(InputInstance != nullptr);
+	if (InputInstance == nullptr) {
+		InputInstance = new Input();
+	}
+
+
 	return InputInstance;
 }
+
 
 void Input::Update()
 {
@@ -67,12 +65,12 @@ void Input::Update()
 		}
 
 
-		if (temp[VK_ESCAPE] & 0x80) {
-			glfwSetWindowShouldClose(m_window, GLFW_TRUE);
-		}
 	}
 
 
+	if (temp[VK_ESCAPE] & 0x80) {
+		glfwSetWindowShouldClose(m_window, GLFW_TRUE);
+	}
 
 	double tx_, ty_;
 

@@ -9,6 +9,8 @@ Engine::Engine() { }
 Engine::~Engine() { }
 
 void Engine::Init() {
+
+	printf("stop");
 	// glfw 라이브러리 초기화
 	if (!glfwInit()) {
 		exit(-1);
@@ -52,7 +54,7 @@ void Engine::Init() {
 	glEnable(GL_DEPTH_TEST);
 
 	// Initialize Components of Engine 
-	Input::GetInstance(m_windowInfo.window);
+	Input::GetInstance()->Init(m_windowInfo.window);
 	m_renderer = std::make_unique<Renderer>(m_windowInfo.window);
 	m_timer = std::make_unique<Timer>();
 

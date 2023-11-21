@@ -1,6 +1,4 @@
-﻿#pragma once
-
-
+#pragma once
 #include "Renderer.h"
 #include "Timer.h"
 

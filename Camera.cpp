@@ -14,7 +14,8 @@ Camera::Camera(GLFWwindow* Window, UINT ShaderId, glm::vec3 EYE, float NearZ, fl
 
 	m_projectionLocation = glGetUniformLocation(m_shaderId, "perspective");
 	m_lookatLocation = glGetUniformLocation(m_shaderId, "lookat");
-
+	
+	m_viewPositionLocation = glGetUniformLocation(m_shaderId, "viewPos");
 
 	m_basisZ = glm::normalize(-m_at);
 	m_basisX = glm::normalize(glm::cross(m_up, m_basisZ));
@@ -104,6 +105,8 @@ void Camera::Render(){
 		v)
 	);
 
+
+	glUniform3f(m_viewPositionLocation, m_eye.x, m_eye.y, m_eye.z);
 
 
 

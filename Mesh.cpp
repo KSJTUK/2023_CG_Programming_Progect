@@ -192,7 +192,7 @@ Mesh::Mesh(std::string path, float3 color) {
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, normal));
 	glEnableVertexAttribArray(2);
 
-
+	
 
 
 	

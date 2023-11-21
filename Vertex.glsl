@@ -11,6 +11,8 @@ uniform mat4 lookat;
 
 
 
+
+
 out vec3 out_Color;
 
 
@@ -28,6 +30,5 @@ void main()
 
 	out_Color = in_Color;
 
-	out_Normal = in_Normal;
-
+	out_Normal = mat3(transpose(inverse(transform))) * in_Normal;
 }

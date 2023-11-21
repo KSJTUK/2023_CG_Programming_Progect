@@ -35,6 +35,8 @@ private:
 	UINT m_lookatLocation{ 0 };
 
 
+	UINT m_viewPositionLocation{ 0 };
+
 	float m_fovY{ 45.f };
 
 	glm::vec3 m_eye{ };

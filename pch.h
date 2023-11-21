@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <stdio.h>
 #include <iostream>
@@ -12,6 +12,8 @@
 #include <gl/glm/gtc/matrix_transform.hpp>
 #include <gl/glm/gtx/vector_angle.hpp>
 #include <gl/glm/gtx/euler_angles.hpp>
+#include <gl/glm/gtx/quaternion.hpp>
+
 
 // STL 헤더 파일들 추가
 #include <string>
@@ -22,6 +24,8 @@
 #include <algorithm>
 #include <unordered_map>
 #include <list>
+#include <map>
+#include <unordered_map>
 
 using int32 = __int32;
 using int64 = __int64;

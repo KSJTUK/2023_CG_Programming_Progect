@@ -50,9 +50,9 @@ private:
 public:
 
 
-	static Input* GetInstance(GLFWwindow* window);
 	static Input* GetInstance();
 
+	void Init(GLFWwindow* window);
 
 
 	void Update();
