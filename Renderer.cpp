@@ -11,7 +11,7 @@ Renderer::Renderer(GLFWwindow* window)
 
 
 
-	testmesh = std::make_shared<Mesh>("cube.obj", float3{ 0.9f,0.9f,0.5f });
+	testmesh = std::make_shared<Mesh>("teapot.obj", float3{ 0.9f,0.9f,0.5f });
 	// find ... iter 
 
 

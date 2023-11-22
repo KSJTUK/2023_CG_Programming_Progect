@@ -84,7 +84,7 @@ void Engine::LateUpdate() {
 
 void Engine::Render() {
 	//// 렌더링 코드
-	glClearColor(0.5f, 0.5f, 0.5f, 1.f);
+	glClearColor(0.f, 0.f, 0.f, 1.f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	m_renderer->Render();

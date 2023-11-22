@@ -9,6 +9,7 @@ public:
 
 	Component() = default;
 	Component(const std::shared_ptr<Mesh> mesh, UINT shaderId);
+	Component(const UINT buffer, const GLsizei bufferSize,const UINT shaderId);
 
 
 // Private Function Area 
@@ -24,12 +25,13 @@ private:
 
 
 	glm::vec3 m_position{};
-
+	glm::vec3 m_rotation{};
+	glm::vec3 m_scale{};
 
 // Matrix Area 
 private:
 
-	glm::mat4 m_position_Matri    x{};
+	glm::mat4 m_position_Matrix{};
 
 
 
@@ -52,6 +54,8 @@ public:
 
 
 	void SetPosition(glm::vec3 position) { m_position = position; };
+	void SetRotation(glm::vec3 rotation) {}
+	void SetScale(glm::vec3 scale) {}
 };
 
 using Componentptr = std::shared_ptr<Component>;
@@ -64,7 +68,7 @@ public:
 	Model() = default;
 
 
-protected:
+private:
 	/// <summary>
 	/// This is the top tier "Component."
 	/// </summary>
@@ -74,31 +78,64 @@ protected:
 
 	glm::vec3 m_position{};
 
-private:
-
 
 public:
 
+	void AddHead(UINT Buffer, GLsizei Buffersize,UINT shaderId);
+	void AddComponent(UINT Buffer, GLsizei BufferSize,UINT shaderId);
+
+	void SetPosition(glm::vec3 Position) { m_position = Position; };
+	void Move(glm::vec3 Movement) { m_position += Movement; };
+
+
 
 	void Render();
+	void Update();
+
 
 
 };
+
+
+struct _TAG_MESHPACKAGE {
+	UINT vao{};
+	GLsizei vertexcount{};
+
+
+	glm::vec3 position{};
+	glm::vec3 pivot{};
+	glm::vec3 rotation{};
+	glm::vec3 scale{};
+
+
+	UINT index{};
+	UINT childrenof{};
+};
+
+using MKPG = _TAG_MESHPACKAGE;
 
 
 class Object abstract{
 public:
-	Object() = default;
+	Object();
 	
 protected:
 	std::unique_ptr<Model> m_model{ nullptr };
 
+
+	void AddPart(const MKPG& MeshPackage, UINT shaderId);
+
+
+public:
+
 	void Render();
+	virtual void Update(float DeltaTime) = 0;
 
-
-
+	
 
 };
+
+
 
 
 // tests
@@ -109,5 +146,6 @@ public:
 
 	void Render();
 
+	virtual void Update(float DeltaTime);
 };
 
