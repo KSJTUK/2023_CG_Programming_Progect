@@ -153,7 +153,7 @@
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
@@ -164,7 +164,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>

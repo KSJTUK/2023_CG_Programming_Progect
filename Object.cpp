@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Rigidbody.h"
+#include "Object.h"
 
 Component::Component(const std::shared_ptr<Mesh> mesh, UINT shaderId)
 {
@@ -38,8 +38,22 @@ void Component::Render(){
 	glDrawArrays(GL_TRIANGLES, 0, m_vertex_Count);
 }
 
-void Component::Update()
-{
+void Component::Update(){
+
+	if (t >= 1.f) {
+		m_frame += 1;
+	}
+
+
+
+
+	// 기본적인 사원수 애니매이팅은 이 두 줄의 코드로 진행됨
+	// 1. 먼저 현재 키프레임과, 다음 키프레임의 쿼터니언을 가져와, 두 쿼터니언을 t 기준으로 선형 보간한다 
+	// 2. 그 결과로 나온 쿼터니언을 회전행렬로 변환하여 렌더링 파트로 전달한다. ( 통상 업데이트 이후, 렌더링이 진행되므로, 바로 이 값을 사용할 것이다 ) 
+	glm::quat q = glm::slerp(m_frames[m_frame].rotation, m_frames[m_frame + 1].rotation, t);
+	glm::mat4 rotationMatrix = glm::mat4_cast(q);
+
+
 }
 
 
@@ -93,12 +107,13 @@ void Object::AddPart(const MKPG& MeshPackage,UINT ShaderId){
 
 	if (MeshPackage.index == 0) {
 		m_model->AddHead(MeshPackage.vao, MeshPackage.vertexcount, ShaderId);
-		printf("new\n");
 	}
 
 
 
 }
+
+
 
 void Object::Render()
 {
@@ -111,9 +126,10 @@ void Object::Render()
 
 
 
+
 robot::robot(const std::shared_ptr<Mesh> mesh, UINT shaderId){
 
-	MKPG body{ mesh->GetMesh(),mesh->GetVertexCount(),glm::vec3{0.f,0.f,0.f},glm::vec3{0.f,0.f,0.f},glm::vec3{0.f,0.f,0.f},glm::vec3{1.f,1.f,1.f},0,0 };
+	MKPG body{ mesh->GetMesh(),static_cast<GLsizei>(mesh->GetVertexCount()),glm::vec3{0.f,0.f,0.f},glm::vec3{0.f,0.f,0.f},glm::vec3{0.f,0.f,0.f},glm::vec3{1.f,1.f,1.f},0,0 };
 
 	AddPart(body, shaderId);
 

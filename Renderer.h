@@ -2,7 +2,7 @@
 
 #include "Shader.h"
 #include "Camera.h"
-#include "Rigidbody.h"
+#include "Object.h"
 
 class Renderer {
 public:

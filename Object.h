@@ -32,6 +32,8 @@ private:
 private:
 
 	glm::mat4 m_position_Matrix{};
+	glm::mat4 m_rotation_Matrix{};
+	glm::mat4 m_scale_Matrix{};
 
 
 
@@ -115,15 +117,31 @@ struct _TAG_MESHPACKAGE {
 using MKPG = _TAG_MESHPACKAGE;
 
 
+struct _TAG_ANIMATION {
+	glm::vec3 movement{};
+	glm::quat rotation{};
+};
+
+
+using ANIM = _TAG_ANIMATION;
+
 class Object abstract{
 public:
 	Object();
-	
-protected:
+
+private:
 	std::unique_ptr<Model> m_model{ nullptr };
 
 
+protected:
+
+
+
 	void AddPart(const MKPG& MeshPackage, UINT shaderId);
+
+	bool AddAnimation(std::vector<ANIM> Frames,int index);
+
+
 
 
 public:
@@ -139,8 +157,7 @@ public:
 
 
 // tests
-
-class robot : public Object {
+class robot final: public Object  {
 public:
 	robot(const std::shared_ptr<Mesh> mesh, UINT shaderId);
 
