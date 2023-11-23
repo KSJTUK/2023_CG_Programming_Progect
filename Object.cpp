@@ -18,12 +18,6 @@ Component::Component(const UINT buffer, const GLsizei bufferSize, UINT shaderId)
 	m_animationCounter = std::make_unique<AnimationCounter>();
 	m_trans_Location = glGetUniformLocation(shaderId, "transform");
 
-
-
-
-
-
-
 }
 
 
@@ -52,9 +46,20 @@ void Component::Update(){
 
 
 	// temporary 0.0 deltatime 
-	m_animationCounter->Update(0.0);
+	if (m_isAnimated) {
+		m_animationCounter->Update(0.0);
+	}
 	
-	
+
+}
+
+void Component::RegisterAnimation(const KeyFrame& Animation)
+{
+	m_animationCounter->RegisterMyFrame(Animation);
+	if (!m_isAnimated) {
+		m_isAnimated = true;
+	}
+
 
 }
 

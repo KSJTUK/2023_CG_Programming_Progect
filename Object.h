@@ -38,7 +38,7 @@ private:
 	int m_frame = 0;
 	float t = 0.f;
 
-
+	bool m_isAnimated = false;
 
 // Matrix Area 
 private:
@@ -74,7 +74,7 @@ public:
 
 
 
-	void RegisterAnimation(const KeyFrame& Animation) { m_animationCounter->RegisterMyFrame(Animation); }
+	void RegisterAnimation(const KeyFrame& Animation);
 
 
 };

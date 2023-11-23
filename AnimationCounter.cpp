@@ -46,7 +46,6 @@ void AnimationCounter::Update(float DeltaTime){
 
 	}
 
-	std::cout << m_frame << std::endl;
 	
 	// 기본적인 사원수 애니매이팅은 이 두 줄의 코드로 진행됨
 	// 1. 먼저 현재 키프레임과, 다음 키프레임의 쿼터니언을 가져와, 두 쿼터니언을 t 기준으로 선형 보간한다 
