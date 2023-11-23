@@ -18,6 +18,7 @@ Component::Component(const UINT buffer, const GLsizei bufferSize, UINT shaderId)
 
 
 	// 임시 테스트용 
+	// 두 보간 쿼터니언 사이의 term 이 길어질수록 버벅거리는 현상이 있음.
 	glm::quat f1 = glm::quat(glm::radians( glm::vec3(30.f, 10.f, 0.f)));
 	m_frames.push_back(ANIM{ glm::vec3{0.f,0.f,0.f},f1 });
 
@@ -25,6 +26,11 @@ Component::Component(const UINT buffer, const GLsizei bufferSize, UINT shaderId)
 
 	glm::quat f2 = glm::quat(glm::radians(glm::vec3(0.f, 80.f, 0.f)));
 	m_frames.push_back(ANIM{ glm::vec3{0.f,0.f,0.f},f2 });
+
+
+
+	glm::quat f3 = glm::quat(glm::radians(glm::vec3(0.f, 160.f, 30.f)));
+	m_frames.push_back(ANIM{ glm::vec3{0.f,0.f,0.f},f3 });
 }
 
 
@@ -44,7 +50,7 @@ void Component::Render(){
 
 	
 
-	glUniformMatrix4fv(m_trans_Location, 1, GL_FALSE, glm::value_ptr(finaltrans));
+	glUniformMatrix4fv(m_trans_Location, 1, GL_FALSE, glm::value_ptr(finaltrans * glm::translate(m_pivot)));
 	glBindVertexArray(m_vao);
 	glDrawArrays(GL_TRIANGLES, 0, m_vertex_Count);
 }
@@ -53,9 +59,10 @@ void Component::Update(){
 
 	if (t >= 1.f) {
 		m_frame += 1;
+		t = 0.f;
 	}
 	else {
-		t += 0.0001f;
+		t += 0.001f;
 	}
 
 	if (m_frame == m_frames.size() - 1) {
@@ -85,12 +92,22 @@ void Model::AddHead(UINT Buffer, GLsizei Buffersize, UINT ShaderId){
 
 }
 
+void Model::AddHead(std::shared_ptr<Component>& comp)
+{
+	m_body = comp;
+}
+
 void Model::AddComponent(UINT Buffer, GLsizei BufferSize, UINT shaderId)
 {
 	m_child.push_back(std::make_shared<Component>(Buffer, BufferSize, shaderId));
 
 	
 	
+}
+
+void Model::AddComponent(std::shared_ptr<Component>& comp)
+{
+	m_child.push_back(comp);
 }
 
 
@@ -132,7 +149,13 @@ Object::Object(){
 void Object::AddPart(const MKPG& MeshPackage,UINT ShaderId){
 
 	if (MeshPackage.index == 0) {
-		m_model->AddHead(MeshPackage.vao, MeshPackage.vertexcount, ShaderId);
+		Componentptr head = std::make_shared<Component>(MeshPackage.vao, MeshPackage.vertexcount, ShaderId);
+		
+		head->SetPivot(glm::vec3{ 1.f,0.f,0.f });
+
+
+		m_model->AddHead(head);
+		
 	}
 
 

@@ -47,6 +47,10 @@ private:
 	UINT m_trans_Location{};
 
 
+
+	glm::vec3 m_pivot{};
+
+
 	glm::vec3 m_position{};
 	glm::vec3 m_rotation{};
 	glm::vec3 m_scale{};
@@ -56,6 +60,8 @@ private:
 	std::vector<ANIM> m_frames{};
 	int m_frame = 0;
 	float t = 0.f;
+
+
 
 // Matrix Area 
 private:
@@ -87,6 +93,7 @@ public:
 	void SetPosition(glm::vec3 position) { m_position = position; };
 	void SetRotation(glm::vec3 rotation) {}
 	void SetScale(glm::vec3 scale) {}
+	void SetPivot(glm::vec3 pivot) { m_pivot = pivot; };
 };
 
 using Componentptr = std::shared_ptr<Component>;
@@ -113,7 +120,11 @@ private:
 public:
 
 	void AddHead(UINT Buffer, GLsizei Buffersize,UINT shaderId);
+	void AddHead(std::shared_ptr<Component>& comp);
+
 	void AddComponent(UINT Buffer, GLsizei BufferSize,UINT shaderId);
+	void AddComponent(std::shared_ptr<Component>& comp);
+
 
 	void SetPosition(glm::vec3 Position) { m_position = Position; };
 	void Move(glm::vec3 Movement) { m_position += Movement; };
