@@ -14,6 +14,17 @@ Component::Component(const UINT buffer, const GLsizei bufferSize, UINT shaderId)
 {
 	m_trans_Location = glGetUniformLocation(shaderId, "transform");
 
+
+
+
+	// 임시 테스트용 
+	glm::quat f1 = glm::quat(glm::radians( glm::vec3(30.f, 10.f, 0.f)));
+	m_frames.push_back(ANIM{ glm::vec3{0.f,0.f,0.f},f1 });
+
+
+
+	glm::quat f2 = glm::quat(glm::radians(glm::vec3(0.f, 80.f, 0.f)));
+	m_frames.push_back(ANIM{ glm::vec3{0.f,0.f,0.f},f2 });
 }
 
 
@@ -23,7 +34,7 @@ void Component::Render(){
 
 	// calculate transform matrix
 	
-	glm::mat4 finaltrans = glm::translate(m_position);
+	glm::mat4 finaltrans = glm::translate(m_position) * m_rotation_Matrix * glm::scale(glm::vec3{1.f,1.f,1.f});
 	
 	Componentptr parent = m_parent;
 
@@ -43,7 +54,13 @@ void Component::Update(){
 	if (t >= 1.f) {
 		m_frame += 1;
 	}
+	else {
+		t += 0.0001f;
+	}
 
+	if (m_frame == m_frames.size() - 1) {
+		m_frame = 0;
+	}
 
 
 
@@ -53,6 +70,8 @@ void Component::Update(){
 	glm::quat q = glm::slerp(m_frames[m_frame].rotation, m_frames[m_frame + 1].rotation, t);
 	glm::mat4 rotationMatrix = glm::mat4_cast(q);
 
+	m_rotation_Matrix = rotationMatrix;
+	
 
 }
 
@@ -90,6 +109,13 @@ void Model::Update(){
 
 	m_body->SetPosition(m_position);
 	
+	m_body->Update();
+	
+	for (const auto& component : m_child) {
+		component->Update();
+	}
+
+
 }
 
 
@@ -121,6 +147,12 @@ void Object::Render()
 
 }
 
+void Object::Update(float DeltaTime)
+{
+	m_model->Update();
+
+}
+
 
 
 
@@ -142,4 +174,5 @@ void robot::Render()
 
 void robot::Update(float DeltaTime)
 {
+	Object::Update(DeltaTime);
 }

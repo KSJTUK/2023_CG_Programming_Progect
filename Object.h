@@ -1,7 +1,30 @@
 #pragma once
 #include "Mesh.h"
 
+struct _TAG_MESHPACKAGE {
+	UINT vao{};
+	GLsizei vertexcount{};
 
+
+	glm::vec3 position{};
+	glm::vec3 pivot{};
+	glm::vec3 rotation{};
+	glm::vec3 scale{};
+
+
+	UINT index{};
+	UINT childrenof{};
+};
+
+
+
+struct _TAG_ANIMATION {
+	glm::vec3 movement{};
+	glm::quat rotation{};
+};
+
+using MKPG = _TAG_MESHPACKAGE;
+using ANIM = _TAG_ANIMATION;
 
 class Component : public std::enable_shared_from_this<Component>{
 // Constructor and Destructor Area 
@@ -12,7 +35,7 @@ public:
 	Component(const UINT buffer, const GLsizei bufferSize,const UINT shaderId);
 
 
-// Private Function Area 
+// Private Variables Area 
 private:
 	std::shared_ptr<Component> m_parent{ nullptr };
 
@@ -28,12 +51,18 @@ private:
 	glm::vec3 m_rotation{};
 	glm::vec3 m_scale{};
 
+
+
+	std::vector<ANIM> m_frames{};
+	int m_frame = 0;
+	float t = 0.f;
+
 // Matrix Area 
 private:
 
-	glm::mat4 m_position_Matrix{};
-	glm::mat4 m_rotation_Matrix{};
-	glm::mat4 m_scale_Matrix{};
+	glm::mat4 m_position_Matrix{1.f};
+	glm::mat4 m_rotation_Matrix{1.f};
+	glm::mat4 m_scale_Matrix{1.f};
 
 
 
@@ -99,33 +128,10 @@ public:
 };
 
 
-struct _TAG_MESHPACKAGE {
-	UINT vao{};
-	GLsizei vertexcount{};
 
 
-	glm::vec3 position{};
-	glm::vec3 pivot{};
-	glm::vec3 rotation{};
-	glm::vec3 scale{};
 
-
-	UINT index{};
-	UINT childrenof{};
-};
-
-using MKPG = _TAG_MESHPACKAGE;
-
-
-struct _TAG_ANIMATION {
-	glm::vec3 movement{};
-	glm::quat rotation{};
-};
-
-
-using ANIM = _TAG_ANIMATION;
-
-class Object abstract{
+class Object{
 public:
 	Object();
 
@@ -147,7 +153,7 @@ protected:
 public:
 
 	void Render();
-	virtual void Update(float DeltaTime) = 0;
+	void Update(float DeltaTime);
 
 	
 
@@ -163,6 +169,6 @@ public:
 
 	void Render();
 
-	virtual void Update(float DeltaTime);
+	void Update(float DeltaTime);
 };
 

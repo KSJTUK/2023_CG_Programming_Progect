@@ -42,4 +42,9 @@ void Renderer::Render()
 void Renderer::Update(float DeltaTime)
 {
 	m_mainCamera->Update(DeltaTime);
+
+	for (const auto& object : m_objectList) {
+		object->Update(DeltaTime);
+
+	}
 }
