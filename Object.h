@@ -17,7 +17,7 @@ struct _TAG_MESHPACKAGE {
 };
 
 
-
+// 애니매이션에 위치가 이동할 일이 있을까........
 struct _TAG_ANIMATION {
 	glm::vec3 movement{};
 	glm::quat rotation{};
@@ -119,11 +119,17 @@ private:
 
 public:
 
-	void AddHead(UINT Buffer, GLsizei Buffersize,UINT shaderId);
-	void AddHead(std::shared_ptr<Component>& comp);
 
-	void AddComponent(UINT Buffer, GLsizei BufferSize,UINT shaderId);
-	void AddComponent(std::shared_ptr<Component>& comp);
+	// Component is not ready
+	void Registration_Body(UINT Buffer, GLsizei Buffersize,UINT shaderId);
+	// Component is ready
+	void Registration_Body(std::shared_ptr<Component>& comp);
+
+
+	// Component is not ready
+	void Registration_Child(UINT Buffer, GLsizei BufferSize,UINT shaderId);
+	// Component is ready
+	void Registration_Child(std::shared_ptr<Component>& comp);
 
 
 	void SetPosition(glm::vec3 Position) { m_position = Position; };

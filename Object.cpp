@@ -18,7 +18,9 @@ Component::Component(const UINT buffer, const GLsizei bufferSize, UINT shaderId)
 
 
 	// 임시 테스트용 
-	// 두 보간 쿼터니언 사이의 term 이 길어질수록 버벅거리는 현상이 있음.
+	// 두 보간 쿼터니언 사이의 term 이 길어질수록 버벅거리는 현상이 있음
+	//=> 각 프레임미다 각의 간격이 일정하지 않은데, t는 일정한값 ( deltatime 으로 하더라도 결국 겂은 두 각의 간격에 연동되지 못할 것이다 )
+	// 따라서 두 각의 간격을 일정한 수로 나눈 것을 t 의 간격으로 사용해야 할 것이다.
 	glm::quat f1 = glm::quat(glm::radians( glm::vec3(30.f, 10.f, 0.f)));
 	m_frames.push_back(ANIM{ glm::vec3{0.f,0.f,0.f},f1 });
 
@@ -85,19 +87,19 @@ void Component::Update(){
 
 
 
-void Model::AddHead(UINT Buffer, GLsizei Buffersize, UINT ShaderId){
+void Model::Registration_Body(UINT Buffer, GLsizei Buffersize, UINT ShaderId){
 
 	m_body = std::make_shared<Component>(Buffer,Buffersize,ShaderId);
 
 
 }
 
-void Model::AddHead(std::shared_ptr<Component>& comp)
+void Model::Registration_Body(std::shared_ptr<Component>& comp)
 {
 	m_body = comp;
 }
 
-void Model::AddComponent(UINT Buffer, GLsizei BufferSize, UINT shaderId)
+void Model::Registration_Child(UINT Buffer, GLsizei BufferSize, UINT shaderId)
 {
 	m_child.push_back(std::make_shared<Component>(Buffer, BufferSize, shaderId));
 
@@ -105,7 +107,7 @@ void Model::AddComponent(UINT Buffer, GLsizei BufferSize, UINT shaderId)
 	
 }
 
-void Model::AddComponent(std::shared_ptr<Component>& comp)
+void Model::Registration_Child(std::shared_ptr<Component>& comp)
 {
 	m_child.push_back(comp);
 }
@@ -154,7 +156,7 @@ void Object::AddPart(const MKPG& MeshPackage,UINT ShaderId){
 		head->SetPivot(glm::vec3{ 1.f,0.f,0.f });
 
 
-		m_model->AddHead(head);
+		m_model->Registration_Body(head);
 		
 	}
 
