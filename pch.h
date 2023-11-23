@@ -66,9 +66,40 @@ struct _TAG_VERTEX {
 	glm::vec3	normal{ };
 };
 
+
+struct _TAG_MESHPACKAGE {
+	UINT vao{};
+	GLsizei vertexcount{};
+
+
+	glm::vec3 position{};
+	glm::vec3 pivot{};
+	glm::vec3 rotation{};
+	glm::vec3 scale{};
+
+
+	UINT index{};
+	UINT childrenof{};
+};
+
+
+
+struct _TAG_ANIMATION {
+	glm::vec3 movement{};
+	glm::quat rotation{};
+	float angle_unit{};
+	float distance_unit{};
+
+};
+
+
+
+using MeshPKG = _TAG_MESHPACKAGE;
+using KeyFrame = _TAG_ANIMATION;
 using float2 = _TAG_FLOAT2;
 using float3 = _TAG_FLOAT3;
 using float4 = _TAG_FLOAT4;
+
 /// <summary>
 /// <para>
 /// position	= float3{x,y,z}                                                   
