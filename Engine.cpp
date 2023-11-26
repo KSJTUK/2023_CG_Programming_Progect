@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "Input.h"
 
+fbxsdk::FbxManager* _manager{ nullptr };
 
 
 Engine::Engine() { }
@@ -58,6 +59,8 @@ void Engine::Init() {
 	m_renderer = std::make_unique<Renderer>(m_windowInfo.window);
 	m_timer = std::make_unique<Timer>();
 
+
+	_manager = fbxsdk::FbxManager::Create();
 
 	m_ready = true;
 }

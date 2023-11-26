@@ -18,6 +18,9 @@
 
 
 
+// FBXSDK 헤더들 추가 
+#include <fbxsdk.h>
+
 
 
 // STL 헤더 파일들 추가
