@@ -60,7 +60,7 @@ private:
 	std::shared_ptr<Mesh> testmesh{ nullptr };
 	
 
-
+	std::unique_ptr<FBXController> m_ctr{ nullptr };
 
 public:
 

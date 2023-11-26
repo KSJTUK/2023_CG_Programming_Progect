@@ -19,6 +19,12 @@ Renderer::Renderer(GLFWwindow* window)
 
 	m_objectList.push_back(test);
 
+
+
+
+	m_ctr = std::make_unique<FBXController>();
+
+
 }
 
 

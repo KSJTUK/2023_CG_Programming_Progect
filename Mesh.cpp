@@ -205,3 +205,8 @@ Mesh::Mesh(const Mesh& other){
 	m_vao = other.m_vao;
 	m_vbo = other.m_vbo;
 }
+
+FBXController::FBXController(){
+
+
+}

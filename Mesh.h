@@ -18,6 +18,8 @@ public:
 	Mesh(std::string path, float3 color);
 
 
+
+
 	Mesh(const Mesh& other);
 
 private:
@@ -52,4 +54,16 @@ public:
 	/// </summary>
 	/// <returns>size_t : vertex count </returns>
 	const size_t  GetVertexCount() { return m_vertexCount; }
+};
+
+
+
+class FBXController {
+public:
+	FBXController();
+
+private:
+
+
+
 };
