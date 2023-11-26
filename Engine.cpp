@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "Input.h"
 
-fbxsdk::FbxManager* _manager{ nullptr };
 
 
 Engine::Engine() { }
