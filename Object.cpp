@@ -187,9 +187,9 @@ robot::robot(const std::shared_ptr<Mesh> mesh, UINT shaderId){
 	CreateComponent(body, shaderId);
 
 
-	glm::vec3 a1{ 10.f,0.f,20.f };
-	glm::vec3 a2{ 0.f,30.f, 60.f };
-	glm::vec3 a3{ 20.f,50.f,10.f };
+	glm::vec3 a1{ 0.f,10.f,0.f };
+	glm::vec3 a2{ 10.f,20.f,0.f };
+	glm::vec3 a3{ 0.f,30.f,0.f };
 
 	KeyFrame k1{ glm::vec3{0.f,0.f,0.f},glm::quat(a1),glm::angle(glm::normalize(a1),glm::normalize(a2)) / 1000.f,0.f };
 	KeyFrame k2{ glm::vec3{0.f,0.f,0.f},glm::quat(a2),glm::angle(glm::normalize(a2),glm::normalize(a3)) / 1000.f,0.f };

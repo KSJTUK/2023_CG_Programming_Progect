@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include <gl\glew.h>
 
-#include <stacktrace>
 
 
 int main()

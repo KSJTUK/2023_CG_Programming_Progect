@@ -42,7 +42,8 @@ void Input::Update()
 	
 	BYTE temp[256]{ 0, };
 
-	assert(GetKeyboardState(temp));
+
+	GetKeyboardState(temp);
 
 
 

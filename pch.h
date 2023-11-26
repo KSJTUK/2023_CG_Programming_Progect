@@ -1,18 +1,23 @@
 #pragma once
+#pragma warning(disable:4819)
+
 
 #include <stdio.h>
 #include <iostream>
 #include <Windows.h>
 
 // OpenGL 헤더 파일들 추가
-#include <gl/glew.h>
-#include <gl/glfw3.h>
-#include <gl/glm/glm.hpp>
-#include <gl/glm/ext.hpp>
-#include <gl/glm/gtc/matrix_transform.hpp>
-#include <gl/glm/gtx/vector_angle.hpp>
-#include <gl/glm/gtx/euler_angles.hpp>
-#include <gl/glm/gtx/quaternion.hpp>
+#include <GL/glew.h>
+#include <GL/glfw3.h>
+#include <GL/glm/glm.hpp>
+#include <GL/glm/ext.hpp>
+#include <GL/glm/gtc/matrix_transform.hpp>
+#include <GL/glm/gtx/vector_angle.hpp>
+#include <GL/glm/gtx/euler_angles.hpp>
+#include <GL/glm/gtx/quaternion.hpp>
+
+
+
 
 
 // STL 헤더 파일들 추가
