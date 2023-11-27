@@ -53,17 +53,13 @@ void Engine::Init() {
 
 	glEnable(GL_DEPTH_TEST);
 
-	_manager = fbxsdk::FbxManager::Create();
-	if (_manager == NULL) {
-		exit(-1);
-	}
-
 	// Initialize Components of Engine 
 	Input::GetInstance()->Init(m_windowInfo.window);
 	m_renderer = std::make_unique<Renderer>(m_windowInfo.window);
 	m_timer = std::make_unique<Timer>();
 
 
+	_manager = fbxsdk::FbxManager::Create();
 
 	m_ready = true;
 }
