@@ -127,6 +127,8 @@ public:
 	void Update();
 
 
+	glm::vec3 GetPosition() { return m_position; };
+
 
 };
 
@@ -147,6 +149,9 @@ protected:
 
 	void CreateAnimation(const KeyFrame& Animation, int index);
 	
+
+	glm::vec3 GetBodyPosition() { m_model->GetPosition(); };
+
 
 public:
 
@@ -170,3 +175,18 @@ public:
 	void Update(float DeltaTime);
 };
 
+
+
+class lightobject final :public Object {
+public:
+	lightobject(const std::shared_ptr<Mesh> mesh, UINT shaderId);
+
+	void Render();
+
+	void Update(float DeltaTime);
+
+private:
+
+	int m_LocationAttrib_lightPosition{};
+
+};

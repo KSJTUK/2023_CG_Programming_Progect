@@ -53,3 +53,16 @@ public:
 	/// <returns>size_t : vertex count </returns>
 	const size_t  GetVertexCount() { return m_vertexCount; }
 };
+
+
+class FBXMeshObject {
+private:
+	
+	
+	std::vector<vertex> m_vertex{};
+	UINT m_vertexcount{};
+
+
+
+};
+

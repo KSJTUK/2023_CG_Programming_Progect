@@ -22,7 +22,6 @@
 #include <fbxsdk.h>
 
 
-static fbxsdk::FbxManager* _manager = nullptr;
 
 
 // STL 헤더 파일들 추가

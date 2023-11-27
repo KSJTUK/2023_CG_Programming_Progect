@@ -76,6 +76,7 @@ void Model::RegistrationBody(UINT Buffer, GLsizei Buffersize, UINT ShaderId){
 void Model::RegistrationBody(std::shared_ptr<Component>& comp)
 {
 	m_body = comp;
+	
 }
 
 void Model::RegistrationChild(UINT Buffer, GLsizei BufferSize, UINT shaderId)
@@ -114,7 +115,8 @@ void Model::Render()
 void Model::Update(){
 
 	m_body->SetPosition(m_position);
-	
+
+	std::cout << m_position.x << " " << m_position.y << " " << m_position.z << "\n";
 	m_body->Update();
 	
 	for (const auto& component : m_child) {
@@ -141,8 +143,8 @@ void Object::CreateComponent(const MeshPKG& MeshPackage,UINT ShaderId){
 		Componentptr head = std::make_shared<Component>(MeshPackage.vao, MeshPackage.vertexcount, ShaderId);
 		
 		head->SetPivot(glm::vec3{ 1.f,0.f,0.f });
-
-
+		
+		m_model->SetPosition(MeshPackage.position);
 		m_model->RegistrationBody(head);
 		
 	}
@@ -208,4 +210,30 @@ void robot::Render()
 void robot::Update(float DeltaTime)
 {
 	Object::Update(DeltaTime);
+}
+
+lightobject::lightobject(const std::shared_ptr<Mesh> mesh, UINT shaderId)
+{
+	MeshPKG body{ mesh->GetMesh(),static_cast<GLsizei>(mesh->GetVertexCount()),glm::vec3{10.f,10.f,0.f},glm::vec3{0.f,0.f,0.f},glm::vec3{0.f,0.f,0.f},glm::vec3{1.f,1.f,1.f},0,0 };
+	CreateComponent(body, shaderId);
+
+	m_LocationAttrib_lightPosition = glGetUniformLocation(shaderId, "lightposition");
+
+}
+
+void lightobject::Render(){
+
+	
+	glm::vec3 pos = GetBodyPosition();
+	glUniform3f(m_LocationAttrib_lightPosition, pos.x, pos.y, pos.z);
+	std::cout << "a " << std::endl;
+	Object::Render();
+
+
+}
+
+void lightobject::Update(float DeltaTime)
+{
+	Object::Update(DeltaTime);
+
 }

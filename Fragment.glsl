@@ -15,7 +15,9 @@ uniform vec3 viewPos;
 
 
 vec3 light = vec3(1.0,1.0,1.0);
-vec3 light_position = {5.0,5.0,5.0};
+
+uniform vec3 lightposition;
+
 
 
 vec3 specular_color = { 1.0,1.0,1.0 };
@@ -29,7 +31,7 @@ void main()
 	
 	
 	vec3 normalVector = normalize(out_Normal);
-	vec3 lightdir = normalize(light_position - out_Frag_position);
+	vec3 lightdir = normalize(lightposition - out_Frag_position);
 
 
 	float diffuseLight = max(dot(normalVector,lightdir),0.0);

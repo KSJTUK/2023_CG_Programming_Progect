@@ -121,6 +121,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>D:\2023_CG_Project\2023_CG_Programming_Progect\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,8 +142,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
-      <AdditionalIncludeDirectories>D:\Project\2023_CG_Programming_Progect\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4819</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>D:\Project\2023_CG_Programming_Progect\include;D:\2023_CG_Project\2023_CG_Programming_Progect\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4819;26451;26813;26495</DisableSpecificWarnings>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -152,7 +153,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalOptions>opengl32.lib</AdditionalOptions>
-      <AdditionalLibraryDirectories>D:\Project\2023_CG_Programming_Progect\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\2023_CG_Project\2023_CG_Programming_Progect\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32.lib;glew32s.lib;glfw3.lib;glfw3_mt.lib;glfw3dll.lib;libfbxsdk.lib;libfbxsdk-md.lib;libxml2-md.lib;zlib-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -160,6 +161,9 @@
     <ClCompile Include="AnimationCounter.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="FBXMesh.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -167,18 +171,23 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="String.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationCounter.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="FBXMesh.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Input.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="String.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
