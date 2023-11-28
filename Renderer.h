@@ -61,7 +61,7 @@ private:
 	std::shared_ptr<Mesh> testmesh{ nullptr };
 	
 
-
+	std::shared_ptr<Horn> m_horn{};
 
 public:
 

@@ -15,17 +15,32 @@ Renderer::Renderer(GLFWwindow* window)
 	
 	std::shared_ptr<Mesh> lightmesh = std::make_shared<Mesh>("cube.obj", float3{ 1.f,1.f,1.f });
 
-	testmesh = std::make_shared<Mesh>("teapot.obj", float3{ 0.9f,0.9f,0.5f });
+	testmesh = std::make_shared<Mesh>("sphere.obj", float3{ 0.9f,0.9f,0.5f });
 	// find ... iter 
 
 
-	std::shared_ptr<robot>test = std::make_shared<robot>(testmesh, m_shader->GetShaderID());
+	std::shared_ptr<sphere1>test = std::make_shared<sphere1>(testmesh, m_shader->GetShaderID());
 
 
 	std::shared_ptr<lightobject> light = std::make_shared<lightobject>(lightmesh, m_shader->GetShaderID());
 	m_objectList.push_back(light);
 	m_objectList.push_back(test);
+	m_objectList.push_back(std::make_shared<sphere2>(testmesh, m_shader->GetShaderID()));
+	m_objectList.push_back(std::make_shared<sphere3>(testmesh, m_shader->GetShaderID()));
+	m_objectList.push_back(std::make_shared<board>(lightmesh, m_shader->GetShaderID()));
+
 	
+	std::shared_ptr<snow> snow1{ nullptr };
+
+	std::shared_ptr<Mesh> snowmesh = std::make_shared<Mesh>("sphere.obj", float3{ 1.f,1.f,1.f });
+
+	for (auto i = 0; i < 40; ++i) {
+		snow1 = std::make_shared<snow>(snowmesh, m_shader->GetShaderID());
+		m_objectList.push_back(snow1);
+	}
+
+	m_horn = std::make_shared<Horn>(m_shader->GetShaderID());
+
 }
 
 
@@ -35,7 +50,7 @@ void Renderer::Render()
 {
 	m_mainCamera->Render();
 
-
+	m_horn->Render();
 
 
 	for (const auto& object : m_objectList) {
@@ -50,6 +65,7 @@ void Renderer::Update(float DeltaTime)
 {
 	m_mainCamera->Update(DeltaTime);
 
+	m_horn->Update();
 	for (const auto& object : m_objectList) {
 		object->Update(DeltaTime);
 

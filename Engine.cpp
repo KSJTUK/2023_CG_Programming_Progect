@@ -10,7 +10,7 @@ Engine::~Engine() { }
 
 void Engine::Init() {
 
-	printf("stop");
+	
 	// glfw 라이브러리 초기화
 	if (!glfwInit()) {
 		exit(-1);

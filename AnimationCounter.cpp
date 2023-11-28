@@ -19,7 +19,7 @@ void AnimationCounter::Update(float DeltaTime){
 			else {
 				m_frame += m_animationdir;
 			}
-
+			
 
 		}
 		// if animation direction is reversial

@@ -18,9 +18,6 @@
 
 
 
-// FBXSDK 헤더들 추가 
-#include <fbxsdk.h>
-
 
 
 

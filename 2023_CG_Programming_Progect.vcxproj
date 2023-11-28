@@ -154,16 +154,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalOptions>opengl32.lib</AdditionalOptions>
       <AdditionalLibraryDirectories>D:\2023_CG_Project\2023_CG_Programming_Progect\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;glew32s.lib;glfw3.lib;glfw3_mt.lib;glfw3dll.lib;libfbxsdk.lib;libfbxsdk-md.lib;libxml2-md.lib;zlib-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;glew32s.lib;glfw3.lib;glfw3_mt.lib;glfw3dll.lib;assimp-vc143-mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnimationCounter.cpp" />
+    <ClCompile Include="AssimpMesh.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="FBXMesh.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -176,11 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationCounter.h" />
+    <ClInclude Include="AssimpMesh.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="FBXMesh.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="Input.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="pch.h" />
@@ -189,6 +185,7 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="AssimpHeader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Fragment.glsl" />

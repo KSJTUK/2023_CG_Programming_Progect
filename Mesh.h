@@ -55,14 +55,3 @@ public:
 };
 
 
-class FBXMeshObject {
-private:
-	
-	
-	std::vector<vertex> m_vertex{};
-	UINT m_vertexcount{};
-
-
-
-};
-
