@@ -8,5 +8,3 @@ int main()
 
 	engine->Loop();
 }
-
-// 한글 주석 테스트입니다 

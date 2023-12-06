@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "Engine.h"
 
 Engine::Engine() { }
@@ -45,6 +45,8 @@ void Engine::Init() {
 
 void Engine::Update() {
 	// 게임 업데이트 함수
+
+	glfwPollEvents();
 }
 
 void Engine::LateUpdate() {

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 // OpenGL 헤더 파일들 추가
 #include <gl/glew.h>
@@ -52,10 +52,16 @@ struct _TAG_FLOAT4 {
 };
 
 struct _TAG_VERTEX {
-	_TAG_FLOAT3 position{ };
-	_TAG_FLOAT4 color{ };
-	_TAG_FLOAT2 texture{ };
-	glm::vec3	normal{ };
+	glm::vec3 position{ };
+	glm::vec3 normal{ };
+	glm::vec2 texture{ };
+};
+
+struct Meterials {
+	glm::vec3 ambient{ };
+	glm::vec3 diffuse{ };
+	glm::vec3 specular{ };
+	float shininess{ };
 };
 
 using float2 = _TAG_FLOAT2;

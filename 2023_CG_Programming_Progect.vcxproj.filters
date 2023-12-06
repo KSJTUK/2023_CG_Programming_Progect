@@ -19,6 +19,15 @@
     <Filter Include="헤더 파일\Engine">
       <UniqueIdentifier>{2270a4fa-7cef-4f29-bae3-68aee06c3771}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Util">
+      <UniqueIdentifier>{84b7fad4-15e2-4af5-b503-cba182bcf10b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Util">
+      <UniqueIdentifier>{b8372657-c1f6-4d5f-8132-f42667dc5199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pch">
+      <UniqueIdentifier>{eec68558-2971-4258-bfec-8f189c7b94ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
@@ -27,16 +36,22 @@
     <ClCompile Include="Engine\main.cpp">
       <Filter>소스 파일\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\pch.cpp">
-      <Filter>소스 파일\Engine</Filter>
+    <ClCompile Include="Util\Input.cpp">
+      <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>pch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h">
       <Filter>헤더 파일\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\pch.h">
-      <Filter>헤더 파일\Engine</Filter>
+    <ClInclude Include="Util\Input.h">
+      <Filter>헤더 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>pch</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
